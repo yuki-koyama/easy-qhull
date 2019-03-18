@@ -1,0 +1,3 @@
+[submodule "qhull"]
+	path = qhull
+	url = https://github.com/qhull/qhull.git
