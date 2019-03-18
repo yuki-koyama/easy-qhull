@@ -1,0 +1,92 @@
+cmake_minimum_required(VERSION 3.1)
+project(easy-qhull)
+
+set(
+  qhull_r_headers
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/libqhull_r.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/geom_r.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/io_r.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/mem_r.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/merge_r.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/poly_r.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/qhull_ra.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/qset_r.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/random_r.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/stat_r.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/user_r.h
+)
+set(
+  qhull_r_sources
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/global_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/stat_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/geom2_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/poly2_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/merge_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/libqhull_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/geom_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/poly_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/qset_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/mem_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/random_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/usermem_r.c
+  # Excluded becasue qh_fprintf is defined in libqhullcpp/QhullQh.cpp too
+  # ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/userprintf_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/io_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/user_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/rboxlib_r.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhull_r/userprintf_rbox_r.c
+  ${qhull_r_headers}
+)
+set(
+  qhullcpp_headers
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/Coordinates.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/functionObjects.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/PointCoordinates.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/Qhull.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullError.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullFacet.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullFacetList.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullFacetSet.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullHyperplane.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullIterator.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullLinkedList.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullPoint.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullPoints.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullPointSet.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullQh.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullRidge.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullSet.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullSets.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullStat.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullVertex.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullVertexSet.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/RboxPoints.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/RoadError.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/RoadLogEvent.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/qhulltest/RoadTest.h
+)
+set(
+  qhullcpp_sources
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/Coordinates.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/PointCoordinates.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/Qhull.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullFacet.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullFacetList.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullFacetSet.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullHyperplane.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullPoint.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullPointSet.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullPoints.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullQh.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullRidge.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullSet.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullStat.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullVertex.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/QhullVertexSet.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/RboxPoints.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/RoadError.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src/libqhullcpp/RoadLogEvent.cpp
+  ${qhullcpp_headers}
+)
+add_library(qhull STATIC ${qhull_r_sources} ${qhullcpp_sources})
+target_include_directories(qhull PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/qhull/src)
